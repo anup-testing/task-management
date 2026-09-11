@@ -84,7 +84,14 @@ function openStream() {
     let msg = {};
     try { msg = JSON.parse(ev.data); } catch {}
     if (msg.actorId && S.me && msg.actorId === S.me.id) return;   // our own write, already applied
-    await refresh(msg.collections || ["tasks"]);
+    const cols = msg.collections || ["tasks"];
+    const before = cols.includes("tasks") ? new Map(S.tasks.map(t => [t.id, t.assigneeId])) : null;
+    await refresh(cols);
+    if (before && S.me && (cfg().notify || {}).assigned !== false) {
+      const mine = S.tasks.filter(t => t.assigneeId === S.me.id && before.get(t.id) !== S.me.id);
+      if (mine.length === 1) toast(`${empName(msg.actorId)} assigned you “${mine[0].title}”`);
+      else if (mine.length > 1) toast(`${empName(msg.actorId)} assigned you ${mine.length} tasks`);
+    }
   });
   stream.onopen = () => { streamRetry = 0; S.offline = false; };
   stream.onerror = () => {
