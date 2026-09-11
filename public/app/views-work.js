@@ -18,6 +18,7 @@ function viewMyDay() {
   const d = delivery(id, 4);
   const upd = latestUpdate(id);
   const didToday = upd && upd.date === todayISO();
+  const myBreaksToday = breaksToday(id);
 
   const list = (arr, empty) => arr.length ? arr.sort(by(t => t.dueDate || "9999")).map(t => miniRow(t)).join("") : `<div class="empty" style="padding:16px">${esc(empty)}</div>`;
 
@@ -75,6 +76,17 @@ function viewMyDay() {
             <dt>Stale</dt><dd class="mono">${w.stale}</dd>
             <dt>Done this week</dt><dd class="mono">${w.completedWeek}</dd>
           </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-h"><h2>My breaks today</h2><span class="hint">${fmtDuration(sum(myBreaksToday, b => b.liveDurationSec))} total</span></div>
+        <div class="panel-b" style="display:grid;gap:7px">
+          ${myBreaksToday.length ? myBreaksToday.map(b => `
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px">
+              <span>${esc(fmtTime(b.startedAt))} – ${b.endedAt ? esc(fmtTime(b.endedAt)) : "now"}</span>
+              <span class="mono" style="${b.endedAt ? "color:var(--ink-3)" : "color:var(--warn);font-weight:600"}">${fmtDuration(b.liveDurationSec)}</span>
+            </div>`).join("") : `<div style="font-size:12px;color:var(--ink-4)">No breaks taken today.</div>`}
         </div>
       </section>
 

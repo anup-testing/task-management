@@ -164,6 +164,12 @@ function paint() {
   const n = notifications().filter(x => dOf(x.at) && dOf(x.at).getTime() > (S.notifSeen || 0));
   $("#notifDot").hidden = n.length === 0;
   $("#newTaskBtn").hidden = !S.me;
+  const onBreak = S.me && openBreakFor(meId());
+  $("#breakBtn").hidden = !S.me;
+  $("#breakBtn").classList.toggle("on", !!onBreak);
+  $("#breakBtnLabel").textContent = onBreak
+    ? "End break · " + fmtDuration(Math.round((Date.now() - dOf(onBreak.startedAt).getTime()) / 1000))
+    : "Start break";
 
   const v = $("#view");
   document.body.classList.toggle("signed-out", !S.me);

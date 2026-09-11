@@ -281,6 +281,42 @@ export function upsertUpdate(employeeId, e) {
   });
 }
 
+/* -------------------------------------------------------------------- breaks */
+
+const breakOut = r => r && ({
+  id: r.id, employeeId: r.employee_id, startedAt: r.started_at, endedAt: r.ended_at,
+  durationSec: r.duration_sec, createdAt: r.created_at, updatedAt: r.updated_at
+});
+
+/** One employee's break history, most recent first. */
+export const listBreaks = employeeId =>
+  db.prepare("SELECT * FROM breaks WHERE employee_id = ? ORDER BY started_at DESC").all(employeeId).map(breakOut);
+
+/** Every break for every employee — used for the manager-wide bootstrap. */
+export const listAllBreaks = () =>
+  db.prepare("SELECT * FROM breaks ORDER BY started_at DESC").all().map(breakOut);
+
+/** The break in progress for someone, or null. */
+export const getOpenBreak = employeeId =>
+  breakOut(db.prepare("SELECT * FROM breaks WHERE employee_id = ? AND ended_at IS NULL").get(employeeId));
+
+export function startBreak(id, employeeId) {
+  const t = now();
+  db.prepare(`INSERT INTO breaks (id, employee_id, started_at, created_at, updated_at)
+              VALUES (?, ?, ?, ?, ?)`).run(id, employeeId, t, t, t);
+  return getOpenBreak(employeeId);
+}
+
+export function endBreak(id) {
+  const row = db.prepare("SELECT * FROM breaks WHERE id = ?").get(id);
+  if (!row || row.ended_at) return breakOut(row);
+  const t = now();
+  const durationSec = Math.max(0, Math.round((new Date(t) - new Date(row.started_at)) / 1000));
+  db.prepare("UPDATE breaks SET ended_at = ?, duration_sec = ?, updated_at = ? WHERE id = ?")
+    .run(t, durationSec, t, id);
+  return breakOut(db.prepare("SELECT * FROM breaks WHERE id = ?").get(id));
+}
+
 /* ---------------------------------------------------------------- sessions */
 
 export const createSession = (id, employeeId, expiresAt) =>

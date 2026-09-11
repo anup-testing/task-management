@@ -59,6 +59,7 @@ function absorb(d) {
   if (d.projects) S.projects = d.projects;
   if (d.tasks) S.tasks = d.tasks;
   if (d.updates) S.updates = d.updates;
+  if (d.breaks) S.breaks = d.breaks;
   if (d.config) S.config = Object.assign(clone(DEFAULT_CONFIG), d.config);
 }
 
@@ -98,6 +99,7 @@ async function refresh(collections) {
   if (collections.includes("employees")) jobs.push(GET("/api/employees").then(r => r.ok && (S.employees = r.data.employees)));
   if (collections.includes("projects"))  jobs.push(GET("/api/projects").then(r => r.ok && (S.projects = r.data.projects)));
   if (collections.includes("updates"))   jobs.push(GET("/api/updates").then(r => r.ok && (S.updates = r.data.updates)));
+  if (collections.includes("breaks"))    jobs.push(GET("/api/breaks").then(r => r.ok && (S.breaks = r.data.breaks)));
   if (collections.includes("config"))    jobs.push(GET("/api/config").then(r => r.ok && (S.config = Object.assign(clone(DEFAULT_CONFIG), r.data.config))));
   await Promise.all(jobs);
   render();
@@ -114,7 +116,7 @@ async function login(email, password) {
 async function logout() {
   await POST("/api/auth/logout");
   if (stream) { stream.close(); stream = null; }
-  S.me = null; S.tasks = []; S.employees = []; S.projects = []; S.updates = [];
+  S.me = null; S.tasks = []; S.employees = []; S.projects = []; S.updates = []; S.breaks = [];
   closeLayer(); render();
 }
 async function changePassword(current, next) {
@@ -216,6 +218,20 @@ async function resetPassword(id) {
   if (!r.ok) { toast(explain(r), true); return; }
   closeLayer();
   showTempPassword(person, r.data.temporaryPassword);
+}
+async function toggleBreak() {
+  const open = openBreakFor(meId());
+  if (open) {
+    const r = await POST("/api/breaks/end");
+    if (!r.ok) { toast(explain(r), true); return; }
+    const i = S.breaks.findIndex(b => b.id === r.data.break.id);
+    if (i >= 0) S.breaks[i] = r.data.break; else S.breaks.push(r.data.break);
+  } else {
+    const r = await POST("/api/breaks/start");
+    if (!r.ok) { toast(explain(r), true); return; }
+    S.breaks.push(r.data.break);
+  }
+  render();
 }
 async function saveProject(p) {
   const r = await PUT("/api/projects/" + p.id, p);

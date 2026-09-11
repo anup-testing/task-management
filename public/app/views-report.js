@@ -83,7 +83,8 @@ function viewAnalytics() {
     const mine = ts.filter(t => t.assigneeId === e.id);
     const c = periodStats(thisStart, thisEnd, mine);
     const w = workload(e.id);
-    return { e, c, w };
+    const brk = totalBreakSeconds(e.id, iso(thisStart), iso(thisEnd));
+    return { e, c, w, brk };
   }).sort((a, b) => b.c.completed - a.c.completed);
 
   const prioDist = cfg().priorities.map(p => ({ p, n: ts.filter(t => isActive(t) && t.priority === p.id).length }));
@@ -140,11 +141,12 @@ function viewAnalytics() {
   <section class="panel" style="margin-bottom:14px">
     <div class="panel-h"><h2>By employee</h2><span class="hint">${esc(label)}</span></div>
     <div class="tw"><table class="t">
-      <thead><tr><th>Employee</th><th class="c">Created</th><th class="c">Completed</th><th class="c">Overdue</th><th class="c">Blocked</th><th class="c">Carried</th><th class="c">Completion %</th><th class="c">On-time %</th><th class="c">Avg completion</th><th>Workload now</th></tr></thead>
-      <tbody>${perPerson.map(({ e, c, w }) => `<tr>
+      <thead><tr><th>Employee</th><th class="c">Created</th><th class="c">Completed</th><th class="c">Break time</th><th class="c">Overdue</th><th class="c">Blocked</th><th class="c">Carried</th><th class="c">Completion %</th><th class="c">On-time %</th><th class="c">Avg completion</th><th>Workload now</th></tr></thead>
+      <tbody>${perPerson.map(({ e, c, w, brk }) => `<tr>
         <td>${personCell(e.id)}</td>
         <td class="c mono">${c.created}</td>
         <td class="c mono" style="${c.completed ? "color:var(--ok);font-weight:600" : "color:var(--ink-4)"}">${c.completed || "·"}</td>
+        <td class="c mono" style="${brk ? "color:var(--warn)" : "color:var(--ink-4)"}">${brk ? fmtDuration(brk) : "·"}</td>
         <td class="c mono" style="${w.overdue ? "color:var(--crit)" : "color:var(--ink-4)"}">${w.overdue || "·"}</td>
         <td class="c mono" style="${w.blocked ? "color:var(--block)" : "color:var(--ink-4)"}">${w.blocked || "·"}</td>
         <td class="c mono">${c.carried}</td>

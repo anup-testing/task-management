@@ -15,8 +15,8 @@ function viewTeam() {
     <section class="panel" style="margin-bottom:14px">
       <div class="panel-h"><h2>${esc(deptName(dept))}</h2><span class="hint">${rows.length} people</span></div>
       <div class="tw"><table class="t">
-        <thead><tr><th>Employee</th><th>Team</th><th class="c">Active</th><th class="c">Crit</th><th class="c">High</th><th class="c">Due today</th><th class="c">Overdue</th><th class="c">Blocked</th><th class="c">Stale</th><th class="c">Done / wk</th><th class="c">On-time</th><th class="c">Health</th><th>Workload</th><th></th></tr></thead>
-        <tbody>${rows.map(({ e, w, d }) => `<tr>
+        <thead><tr><th>Employee</th><th>Team</th><th class="c">Active</th><th class="c">Crit</th><th class="c">High</th><th class="c">Due today</th><th class="c">Overdue</th><th class="c">Blocked</th><th class="c">Stale</th><th class="c">Done / wk</th><th class="c">On-time</th><th class="c">Health</th><th class="c">Break today</th><th>Workload</th><th></th></tr></thead>
+        <tbody>${rows.map(({ e, w, d }) => { const ob = openBreakFor(e.id), brk = totalBreakSeconds(e.id, todayISO()); return `<tr>
           <td><span class="cellname">${av(e, "sm")}<span class="tx"><button class="linkish" data-emp="${esc(e.id)}">${esc(e.name)}</button><div style="font-size:10.5px;color:var(--ink-4)">${esc(e.title || "")}</div></span></span></td>
           <td style="font-size:11.5px">${esc(teamName(e.departmentId, e.teamId))}</td>
           <td class="c mono">${w.active}</td>
@@ -29,9 +29,10 @@ function viewTeam() {
           <td class="c mono" style="${w.completedWeek ? "color:var(--ok)" : "color:var(--ink-4)"}">${w.completedWeek || "·"}</td>
           <td class="c mono">${d.stats.onTimeRate == null ? "<span style='color:var(--ink-4)'>—</span>" : d.stats.onTimeRate + "%"}</td>
           <td class="c mono" style="${d.score == null ? "color:var(--ink-4)" : d.score >= 75 ? "color:var(--ok)" : d.score >= 55 ? "color:var(--high)" : "color:var(--crit)"}">${d.score == null ? "—" : d.score}${d.reliable ? "" : "*"}</td>
+          <td class="c mono" style="${ob ? "color:var(--warn);font-weight:600" : "color:var(--ink-4)"}">${ob ? "● " : ""}${fmtDuration(brk)}</td>
           <td>${wlBadge(w)}</td>
           <td class="r"><button class="btn sm" data-emp="${esc(e.id)}">Open</button></td>
-        </tr>`).join("")}</tbody>
+        </tr>`; }).join("")}</tbody>
       </table></div>
     </section>`).join("")}
   <div class="note-box">* Delivery health marked with an asterisk is based on fewer than five tasks and should not be read as a performance signal. Open a person to see how each score is built.</div>`;
@@ -44,6 +45,7 @@ function viewEmployee(id) {
   const open = mine.filter(isActive).sort((a, b) => attnScore(b) - attnScore(a) || prio(b.priority).weight - prio(a.priority).weight);
   const done = mine.filter(t => t.status === "COMPLETED").sort(by(t => t.completedAt || "", -1)).slice(0, 12);
   const ups = myUpdates(id).slice(-7).reverse();
+  const brks = recentBreaks(id, 20);
   return `
   <div class="ph">
     <div style="display:flex;gap:12px;align-items:center">${av(e, "lg")}
@@ -60,7 +62,8 @@ function viewEmployee(id) {
     { label: "Overdue", value: w.overdue, tone: "crit", detail: "" },
     { label: "Blocked", value: w.blocked, tone: "block", detail: "" },
     { label: "Done this week", value: w.completedWeek, tone: "ok", detail: `${d.completed} in 4 weeks` },
-    { label: "Workload", value: `<span style="font-size:15px">${w.band === "OVERLOADED" ? "Over" : w.band[0] + w.band.slice(1).toLowerCase()}</span>`, tone: w.band === "OVERLOADED" ? "crit" : w.band === "HIGH" ? "warn" : "ok", detail: `score ${w.score}` }
+    { label: "Workload", value: `<span style="font-size:15px">${w.band === "OVERLOADED" ? "Over" : w.band[0] + w.band.slice(1).toLowerCase()}</span>`, tone: w.band === "OVERLOADED" ? "crit" : w.band === "HIGH" ? "warn" : "ok", detail: `score ${w.score}` },
+    { label: "Break time", value: fmtDuration(totalBreakSeconds(id, todayISO())), tone: "warn", detail: "today" }
   ])}
   <div class="cc-grid">
     <div class="stack">
@@ -79,6 +82,14 @@ function viewEmployee(id) {
     <div class="stack">
       <section class="panel"><div class="panel-h"><h2>Delivery signals</h2><span class="hint">last 4 weeks</span></div>
         <div class="panel-b">${deliveryPanel(d)}</div></section>
+      <section class="panel"><div class="panel-h"><h2>Break history</h2><span class="hint">most recent ${brks.length}</span></div>
+        <div class="panel-b" style="display:grid;gap:7px">
+          ${brks.length ? brks.map(b => `
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px">
+              <span>${esc(fmtDate(b.startedAt, { absolute: true }))} · ${esc(fmtTime(b.startedAt))} – ${b.endedAt ? esc(fmtTime(b.endedAt)) : "now"}</span>
+              <span class="mono" style="${b.endedAt ? "color:var(--ink-3)" : "color:var(--warn);font-weight:600"}">${fmtDuration(b.liveDurationSec)}</span>
+            </div>`).join("") : emptyState("No breaks recorded", "Nothing logged yet.")}
+        </div></section>
       <section class="panel"><div class="panel-h"><h2>Recent daily updates</h2></div>
         <div class="panel-b" style="display:grid;gap:11px">
           ${ups.length ? ups.map(u => `<div style="border-left:2px solid var(--accent-line);padding-left:9px">

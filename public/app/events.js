@@ -326,6 +326,7 @@ document.addEventListener("click", async ev => {
 
 /* ---- topbar ---- */
 $("#newTaskBtn").addEventListener("click", () => openLayer(taskForm(null, isManager() ? "" : meId())));
+$("#breakBtn").addEventListener("click", () => toggleBreak());
 $("#notifBtn").addEventListener("click", () => { openLayer(notifModal()); render(); });
 $("#whoBtn").addEventListener("click", () => openLayer(accountModal()));
 $("#themeBtn").addEventListener("click", () => {
@@ -469,4 +470,5 @@ document.addEventListener("submit", async ev => {
   render();
   initData();
   setInterval(() => { if (S.ready && S.me && !L().innerHTML) render(); }, 120000);  // keep relative times honest
+  setInterval(() => { if (S.me && openBreakFor(meId())) render(); }, 1000);         // tick the running break timer
 })();

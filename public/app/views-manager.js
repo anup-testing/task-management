@@ -131,9 +131,11 @@ function workCard(e, n) {
   const cur = currentTasks(e.id, 3);
   const w = workload(e.id);
   const upd = latestUpdate(e.id);
+  const ob = openBreakFor(e.id);
+  const breakBadge = ob ? `<span class="flag st">${icon("clock")}On break · ${fmtDuration(Math.round((Date.now() - dOf(ob.startedAt).getTime()) / 1000))}</span>` : "";
   if (!cur.length) {
     return `<article class="wcard idle">
-      <div class="wc-h">${av(e)}<div><div class="nm">${esc(e.name)}</div><div class="ro">${esc(e.title || "")}</div></div></div>
+      <div class="wc-h">${av(e)}<div><div class="nm">${esc(e.name)}</div><div class="ro">${esc(e.title || "")}</div></div>${breakBadge ? `<span style="margin-left:auto">${breakBadge}</span>` : ""}</div>
       <div class="wc-b"><div style="font-size:12px;color:var(--ink-4)">No open tasks. ${w.completedWeek ? w.completedWeek + " completed this week." : "Capacity available."}</div>
       <button class="btn sm" data-newfor="${esc(e.id)}">${icon("plus")}Assign work</button></div>
     </article>`;
@@ -142,7 +144,7 @@ function workCard(e, n) {
   const next = nextAction(t);
   return `<article class="wcard">
     <div class="wc-h">${av(e)}<div style="min-width:0"><div class="nm">${esc(e.name)}</div><div class="ro">${esc(e.title || "")}</div></div>
-      <span style="margin-left:auto">${wlBadge(w)}</span></div>
+      <span style="margin-left:auto;display:flex;gap:6px;align-items:center">${breakBadge}${wlBadge(w)}</span></div>
     <div class="wc-b">
       <div class="tt">${taskLink(t)}</div>
       <dl class="kv">
