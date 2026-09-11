@@ -27,7 +27,7 @@ node -e "console.log(require('crypto').randomBytes(32).toString('base64url'))"
 
 The seed prints the sign-in details. Every seeded account starts on the password
 `controlcenter1` and is asked to change it after signing in. Sign in as
-`asha.raman@lghomecomfort.ca` for the manager view, anyone else for the employee
+`asha.raman@demo.example` for the manager view, anyone else for the employee
 side.
 
 **Starting with real data instead:** skip `npm run seed` and create the first

@@ -1,0 +1,97 @@
+{
+ "title": "Q4 furnace search campaign build",
+ "description": "Three ad groups per city tier, sitelinks and callouts written, budget pacing to set.",
+ "assigneeId": "emp-tomas",
+ "createdById": "emp-asha",
+ "departmentId": "mkt",
+ "teamId": "ads",
+ "projectId": "prj-q4-campaigns",
+ "category": "Campaign",
+ "priority": "CRITICAL",
+ "status": "IN_PROGRESS",
+ "progress": 50,
+ "createdAt": "2026-08-31T09:15:00.000Z",
+ "startDate": "2026-09-01",
+ "dueDate": "2026-09-12",
+ "expectedCompletion": "2026-09-12",
+ "completedAt": null,
+ "updatedAt": "2026-09-10T12:00:00.000Z",
+ "estimatedHours": 12,
+ "actualHours": 7,
+ "tags": [
+  "google-ads"
+ ],
+ "blocker": null,
+ "dependencies": [],
+ "links": [],
+ "comments": [],
+ "activity": [
+  {
+   "id": "a200",
+   "at": "2026-08-31T09:15:00.000Z",
+   "byId": "emp-asha",
+   "byName": "Asha Raman",
+   "kind": "create",
+   "field": null,
+   "from": null,
+   "to": null,
+   "note": "Task created"
+  },
+  {
+   "id": "a201",
+   "at": "2026-08-31T09:16:00.000Z",
+   "byId": "emp-asha",
+   "byName": "Asha Raman",
+   "kind": "assign",
+   "field": "assigneeId",
+   "from": null,
+   "to": "emp-tomas",
+   "note": null
+  },
+  {
+   "id": "a202",
+   "at": "2026-09-01T09:30:00.000Z",
+   "byId": "emp-tomas",
+   "byName": "Tomas Reyes",
+   "kind": "status",
+   "field": "status",
+   "from": "Not started",
+   "to": "In progress",
+   "note": null
+  },
+  {
+   "id": "a2030",
+   "at": "2026-09-02T13:00:00.000Z",
+   "byId": "emp-tomas",
+   "byName": "Tomas Reyes",
+   "kind": "progress",
+   "field": "progress",
+   "from": "0%",
+   "to": "10%",
+   "note": null
+  },
+  {
+   "id": "a2031",
+   "at": "2026-09-03T13:07:00.000Z",
+   "byId": "emp-tomas",
+   "byName": "Tomas Reyes",
+   "kind": "progress",
+   "field": "progress",
+   "from": "10%",
+   "to": "25%",
+   "note": null
+  },
+  {
+   "id": "a2032",
+   "at": "2026-09-04T13:14:00.000Z",
+   "byId": "emp-tomas",
+   "byName": "Tomas Reyes",
+   "kind": "progress",
+   "field": "progress",
+   "from": "25%",
+   "to": "50%",
+   "note": null
+  }
+ ],
+ "reopenCount": 0
+}

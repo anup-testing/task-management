@@ -1,0 +1,51 @@
+{
+ "title": "Remarketing audience rebuild",
+ "description": "",
+ "assigneeId": "emp-tomas",
+ "createdById": "emp-asha",
+ "departmentId": "mkt",
+ "teamId": "ads",
+ "projectId": "prj-q4-campaigns",
+ "category": "Campaign",
+ "priority": "MEDIUM",
+ "status": "NOT_STARTED",
+ "progress": 0,
+ "createdAt": "2026-09-06T09:15:00.000Z",
+ "startDate": null,
+ "dueDate": "2026-09-21",
+ "expectedCompletion": null,
+ "completedAt": null,
+ "updatedAt": "2026-09-10T11:00:00.000Z",
+ "estimatedHours": 5,
+ "actualHours": null,
+ "tags": [],
+ "blocker": null,
+ "dependencies": [],
+ "links": [],
+ "comments": [],
+ "activity": [
+  {
+   "id": "a230",
+   "at": "2026-09-06T09:15:00.000Z",
+   "byId": "emp-asha",
+   "byName": "Asha Raman",
+   "kind": "create",
+   "field": null,
+   "from": null,
+   "to": null,
+   "note": "Task created"
+  },
+  {
+   "id": "a231",
+   "at": "2026-09-06T09:16:00.000Z",
+   "byId": "emp-asha",
+   "byName": "Asha Raman",
+   "kind": "assign",
+   "field": "assigneeId",
+   "from": null,
+   "to": "emp-tomas",
+   "note": null
+  }
+ ],
+ "reopenCount": 0
+}

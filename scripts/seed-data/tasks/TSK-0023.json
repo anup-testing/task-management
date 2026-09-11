@@ -1,0 +1,142 @@
+{
+ "title": "Heat pump rebate landing page copy",
+ "description": "Copy is drafted around the rebate amount, which changed twice. Holding until the final figure is confirmed.",
+ "assigneeId": "emp-mira",
+ "createdById": "emp-asha",
+ "departmentId": "mkt",
+ "teamId": "content",
+ "projectId": "prj-q4-campaigns",
+ "category": "Content",
+ "priority": "HIGH",
+ "status": "BLOCKED",
+ "progress": 30,
+ "createdAt": "2026-09-01T09:15:00.000Z",
+ "startDate": "2026-09-02",
+ "dueDate": "2026-09-10",
+ "expectedCompletion": "2026-09-11",
+ "completedAt": null,
+ "updatedAt": "2026-09-08T21:00:00.000Z",
+ "estimatedHours": 6,
+ "actualHours": 2,
+ "tags": [
+  "rebate"
+ ],
+ "blocker": {
+  "reason": "Waiting on confirmed 2026 rebate figures from the manufacturer",
+  "cause": "External vendor",
+  "ownerId": null,
+  "since": "2026-09-07",
+  "expectedResolution": "2026-09-12",
+  "needsManager": true,
+  "resolvedAt": null
+ },
+ "dependencies": [],
+ "links": [],
+ "comments": [
+  {
+   "id": "c2216",
+   "authorId": "emp-mira",
+   "at": "2026-09-07T16:00:00.000Z",
+   "body": "Third rebate figure this month. I'll hold the draft rather than rewrite it again.",
+   "managerNote": false
+  },
+  {
+   "id": "c229",
+   "authorId": "emp-asha",
+   "at": "2026-09-08T09:00:00.000Z",
+   "body": "Agreed. Holding is right. I'll chase the manufacturer directly.",
+   "managerNote": true
+  }
+ ],
+ "activity": [
+  {
+   "id": "a220",
+   "at": "2026-09-01T09:15:00.000Z",
+   "byId": "emp-asha",
+   "byName": "Asha Raman",
+   "kind": "create",
+   "field": null,
+   "from": null,
+   "to": null,
+   "note": "Task created"
+  },
+  {
+   "id": "a221",
+   "at": "2026-09-01T09:16:00.000Z",
+   "byId": "emp-asha",
+   "byName": "Asha Raman",
+   "kind": "assign",
+   "field": "assigneeId",
+   "from": null,
+   "to": "emp-mira",
+   "note": null
+  },
+  {
+   "id": "a222",
+   "at": "2026-09-02T09:30:00.000Z",
+   "byId": "emp-mira",
+   "byName": "Mira Gupta",
+   "kind": "status",
+   "field": "status",
+   "from": "Not started",
+   "to": "In progress",
+   "note": null
+  },
+  {
+   "id": "a2230",
+   "at": "2026-09-03T13:00:00.000Z",
+   "byId": "emp-mira",
+   "byName": "Mira Gupta",
+   "kind": "progress",
+   "field": "progress",
+   "from": "0%",
+   "to": "10%",
+   "note": null
+  },
+  {
+   "id": "a2231",
+   "at": "2026-09-04T13:07:00.000Z",
+   "byId": "emp-mira",
+   "byName": "Mira Gupta",
+   "kind": "progress",
+   "field": "progress",
+   "from": "10%",
+   "to": "25%",
+   "note": null
+  },
+  {
+   "id": "a22b",
+   "at": "2026-09-07T11:00:00.000Z",
+   "byId": "emp-mira",
+   "byName": "Mira Gupta",
+   "kind": "block",
+   "field": null,
+   "from": null,
+   "to": null,
+   "note": "Blocker: Waiting on confirmed 2026 rebate figures from the manufacturer (manager intervention requested)"
+  },
+  {
+   "id": "ac2216",
+   "at": "2026-09-07T16:00:00.000Z",
+   "byId": "emp-mira",
+   "byName": "Mira Gupta",
+   "kind": "comment",
+   "field": null,
+   "from": null,
+   "to": null,
+   "note": "Third rebate figure this month. I'll hold the draft rather than rewrite it again."
+  },
+  {
+   "id": "ac229",
+   "at": "2026-09-08T09:00:00.000Z",
+   "byId": "emp-asha",
+   "byName": "Asha Raman",
+   "kind": "comment",
+   "field": null,
+   "from": null,
+   "to": null,
+   "note": "Agreed. Holding is right. I'll chase the manufacturer directly."
+  }
+ ],
+ "reopenCount": 0
+}

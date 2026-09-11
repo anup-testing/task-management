@@ -1,0 +1,10 @@
+node_modules/
+data/
+*.db
+*.db-shm
+*.db-wal
+.env
+backups/
+.DS_Store
+*:Zone.Identifier
+*.log

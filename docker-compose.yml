@@ -1,0 +1,18 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      SESSION_SECRET: ${SESSION_SECRET:?set SESSION_SECRET in .env}
+      NODE_ENV: production
+      TRUST_PROXY: "1"
+      SESSION_DAYS: "14"
+      # Uncomment if you terminate TLS elsewhere and serve this over plain HTTP
+      # on a private network:
+      # INSECURE_COOKIES: "1"
+    volumes:
+      - tcc-data:/app/data
+volumes:
+  tcc-data:

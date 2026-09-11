@@ -1,0 +1,72 @@
+{
+ "title": "Conversion tracking audit before spend increase",
+ "description": "Budget steps up on the 15th. Tracking has to be verified before that, not after.",
+ "assigneeId": "emp-ravi",
+ "createdById": "emp-asha",
+ "departmentId": "ops",
+ "teamId": "it",
+ "projectId": "prj-q4-campaigns",
+ "category": "Audit",
+ "priority": "CRITICAL",
+ "status": "NOT_STARTED",
+ "progress": 0,
+ "createdAt": "2026-09-08T09:15:00.000Z",
+ "startDate": null,
+ "dueDate": "2026-09-11",
+ "expectedCompletion": "2026-09-11",
+ "completedAt": null,
+ "updatedAt": "2026-09-10T11:00:00.000Z",
+ "estimatedHours": 6,
+ "actualHours": null,
+ "tags": [
+  "analytics"
+ ],
+ "blocker": null,
+ "dependencies": [],
+ "links": [],
+ "comments": [
+  {
+   "id": "c2517",
+   "authorId": "emp-asha",
+   "at": "2026-09-08T17:00:00.000Z",
+   "body": "Budget steps up on the 15th — tracking must be verified before then.",
+   "managerNote": true
+  }
+ ],
+ "activity": [
+  {
+   "id": "a250",
+   "at": "2026-09-08T09:15:00.000Z",
+   "byId": "emp-asha",
+   "byName": "Asha Raman",
+   "kind": "create",
+   "field": null,
+   "from": null,
+   "to": null,
+   "note": "Task created"
+  },
+  {
+   "id": "a251",
+   "at": "2026-09-08T09:16:00.000Z",
+   "byId": "emp-asha",
+   "byName": "Asha Raman",
+   "kind": "assign",
+   "field": "assigneeId",
+   "from": null,
+   "to": "emp-ravi",
+   "note": null
+  },
+  {
+   "id": "ac2517",
+   "at": "2026-09-08T17:00:00.000Z",
+   "byId": "emp-asha",
+   "byName": "Asha Raman",
+   "kind": "comment",
+   "field": null,
+   "from": null,
+   "to": null,
+   "note": "Budget steps up on the 15th — tracking must be verified before then."
+  }
+ ],
+ "reopenCount": 0
+}

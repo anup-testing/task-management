@@ -1,0 +1,13 @@
+{
+ "name": "Priya Nair",
+ "initials": "PN",
+ "role": "employee",
+ "title": "SEO Analyst",
+ "email": "priya.nair@lghomecomfort.ca",
+ "departmentId": "mkt",
+ "teamId": "seo",
+ "managerId": "emp-asha",
+ "capacityHours": 40,
+ "color": "#6E42A8",
+ "active": true
+}

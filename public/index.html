@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Marketing Team</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230E7C86'/><text x='16' y='22' font-family='Helvetica,Arial' font-size='14' font-weight='700' fill='white' text-anchor='middle'>TC</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div id="app">
+  <aside class="rail">
+    <div class="rail-brand">
+      <div class="brand-logo"><img src="/lghomelogo.svg" alt="Company logo"></div>
+    </div>
+    <nav class="nav" id="nav" aria-label="Sections"></nav>
+    <div class="rail-foot">
+      <button class="who" id="whoBtn">
+        <span class="av lg" id="whoAv">?</span>
+        <span class="tx">
+          <span class="nm" id="whoName">Account</span><br>
+          <span class="rl" id="whoRole">signed out</span>
+        </span>
+      </button>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="searchwrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="globalSearch" type="search" placeholder="Search tasks, people, projects, IDs…" autocomplete="off" aria-label="Global search">
+        <div id="searchPop" hidden></div>
+      </div>
+      <span class="tb-date" id="tbDate"></span>
+      <button class="iconbtn" id="notifBtn" title="Notifications" aria-label="Notifications">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+        <span class="dot" id="notifDot" hidden></span>
+      </button>
+      <button class="iconbtn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg>
+      </button>
+      <button class="btn pri" id="newTaskBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>
+        New task
+      </button>
+    </header>
+    <main class="content" id="view" tabindex="-1"></main>
+  </div>
+</div>
+<div id="layer"></div>
+
+<!-- Loaded in order; each file adds to the same global scope.
+     api.js must come after util.js (it uses S) and before events.js. -->
+<script src="/app/util.js"></script>
+<script src="/app/metrics.js"></script>
+<script src="/app/api.js"></script>
+<script src="/app/ui.js"></script>
+<script src="/app/views-manager.js"></script>
+<script src="/app/views-work.js"></script>
+<script src="/app/views-team.js"></script>
+<script src="/app/views-report.js"></script>
+<script src="/app/drawer.js"></script>
+<script src="/app/modals.js"></script>
+<script src="/app/events.js"></script>
+</body>
+</html>
