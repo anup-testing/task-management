@@ -128,6 +128,17 @@ CREATE TABLE IF NOT EXISTS daily_updates (
 );
 CREATE INDEX IF NOT EXISTS idx_updates_date ON daily_updates(date);
 
+CREATE TABLE IF NOT EXISTS breaks (
+  id           TEXT PRIMARY KEY,
+  employee_id  TEXT NOT NULL REFERENCES employees(id) ON DELETE CASCADE,
+  started_at   TEXT NOT NULL,
+  ended_at     TEXT,                            -- null while break is in progress
+  duration_sec INTEGER,                         -- filled in on end
+  created_at   TEXT NOT NULL,
+  updated_at   TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_breaks_employee ON breaks(employee_id, started_at);
+
 CREATE TABLE IF NOT EXISTS config (
   key        TEXT PRIMARY KEY,
   value      TEXT NOT NULL,                 -- JSON

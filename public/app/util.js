@@ -50,7 +50,20 @@ function fmtDT(ts) {
   const ap = hh >= 12 ? "PM" : "AM", h12 = hh % 12 || 12;
   return `${MON[d.getMonth()]} ${d.getDate()}, ${h12}:${mm} ${ap}`;
 }
+function fmtTime(ts) {
+  const d = dOf(ts); if (!d) return "—";
+  const hh = d.getHours(), mm = String(d.getMinutes()).padStart(2, "0");
+  const ap = hh >= 12 ? "PM" : "AM", h12 = hh % 12 || 12;
+  return `${h12}:${mm} ${ap}`;
+}
 function fmtH(n) { if (n == null || isNaN(n)) return "—"; return (Math.round(n * 10) / 10) + "h"; }
+function fmtDuration(seconds) {
+  if (seconds == null || isNaN(seconds)) return "—";
+  const m = Math.round(seconds / 60);
+  if (m < 60) return m + "m";
+  const h = Math.floor(m / 60), rem = m % 60;
+  return rem ? `${h}h ${rem}m` : `${h}h`;
+}
 function fmtBytes(n) {
   if (!n && n !== 0) return "—";
   if (n < 1024) return n + " B";
@@ -171,7 +184,7 @@ const PROGRESS_STEPS = [0, 10, 25, 50, 75, 90, 100];
 /* --------------------------------------------------------------------- state */
 const S = {
   ready: false, connected: false, offline: false,
-  employees: [], tasks: [], projects: [], updates: [],
+  employees: [], tasks: [], projects: [], updates: [], breaks: [],
   config: JSON.parse(JSON.stringify(DEFAULT_CONFIG)),
   me: null,
   view: store.get("view", "cc"),

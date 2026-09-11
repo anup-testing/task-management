@@ -274,6 +274,8 @@ a { color: var(--accent); }
 .btn.pri:hover { background: var(--accent-ink); border-color: var(--accent-ink); color: var(--on-accent); }
 .btn.dgr { color: var(--crit); border-color: var(--crit-line); }
 .btn.dgr:hover { background: var(--crit-soft); color: var(--crit); border-color: var(--crit); }
+.btn.on { background: var(--warn-soft); color: var(--warn); border-color: var(--warn); font-weight: 600; }
+.btn.on:hover { background: var(--warn-soft); color: var(--warn); border-color: var(--warn); }
 .btn.sm { padding: 3px 8px; font-size: 11.5px; }
 .btn:disabled { opacity: .45; cursor: not-allowed; }
 

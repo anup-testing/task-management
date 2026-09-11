@@ -142,6 +142,7 @@ export function mountAdmin(app, requireUser, requireManager) {
     projects: store.listProjects(),
     tasks: store.listTasks(),
     updates: store.listUpdates(),
+    breaks: isManager(req.user) ? store.listAllBreaks() : store.listBreaks(req.user.id),
     config: store.getConfig(),
     serverTime: new Date().toISOString()
   }));

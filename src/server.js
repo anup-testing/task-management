@@ -12,6 +12,7 @@ import { mountEvents } from "./events.js";
 import { mountTasks } from "./routes/tasks.js";
 import { mountAdmin } from "./routes/admin.js";
 import { mountAttachments } from "./routes/attachments.js";
+import { mountBreaks } from "./routes/breaks.js";
 import { listEmployees } from "./db.js";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -36,6 +37,7 @@ mountEvents(app, requireUser);
 mountTasks(app, requireUser, requireManager);
 mountAdmin(app, requireUser, requireManager);
 mountAttachments(app, requireUser);
+mountBreaks(app, requireUser);
 
 app.get("/api/health", (_req, res) => res.json({ ok: true, people: listEmployees().length }));
 

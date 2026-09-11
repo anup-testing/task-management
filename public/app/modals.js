@@ -279,9 +279,10 @@ function doExport(kind) {
       ["Cancelled", cur.cancelled, prev.cancelled], ["Blocked", cur.blocked, prev.blocked],
       ["Completion rate %", cur.completionRate, prev.completionRate], ["On-time rate %", cur.onTimeRate ?? "", prev.onTimeRate ?? ""],
       ["Avg completion days", cur.avgCycle ?? "", prev.avgCycle ?? ""], ["Avg delay days", cur.avgDelay ?? "", prev.avgDelay ?? ""], [],
-      ["Employee", "Created", "Completed", "Overdue now", "Blocked now", "Carried", "Completion %", "On-time %", "Avg completion days", "Workload band", "Workload score"]];
+      ["Employee", "Created", "Completed", "Break time (min)", "Overdue now", "Blocked now", "Carried", "Completion %", "On-time %", "Avg completion days", "Workload band", "Workload score"]];
     S.employees.forEach(e => { const mine = ts.filter(t => t.assigneeId === e.id), c = periodStats(s0, s1, mine), w = workload(e.id);
-      out.push([e.name, c.created, c.completed, w.overdue, w.blocked, c.carried, c.completionRate, c.onTimeRate ?? "", c.avgCycle ?? "", w.band, w.score]); });
+      const brkMin = Math.round(totalBreakSeconds(e.id, iso(s0), iso(s1)) / 60);
+      out.push([e.name, c.created, c.completed, brkMin, w.overdue, w.blocked, c.carried, c.completionRate, c.onTimeRate ?? "", c.avgCycle ?? "", w.band, w.score]); });
     return downloadCSV(`weekly-report-${iso(s0)}.csv`, out);
   }
   if (kind === "daily") return saveFile(`daily-summary-${stamp}.txt`, summaryText());

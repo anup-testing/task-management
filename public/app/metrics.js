@@ -136,6 +136,32 @@ function currentTasks(empId, n = 3) {
   return open.sort((a, b) => rank(b) - rank(a)).slice(0, n);
 }
 
+/* -------------------------------------------------------------------- breaks */
+const openBreakFor = empId => S.breaks.find(b => b.employeeId === empId && !b.endedAt) || null;
+/** Sum of completed breaks for a person, optionally bounded to [sinceISO, untilISO).
+ *  Every break row is kept forever in the database — this is just a display window,
+ *  not a retention limit, so any past day/week/month can still be queried. */
+function totalBreakSeconds(empId, sinceISO, untilISO) {
+  return sum(S.breaks.filter(b => b.employeeId === empId && b.endedAt
+               && (!sinceISO || b.startedAt >= sinceISO) && (!untilISO || b.startedAt < untilISO)),
+             b => b.durationSec || 0);
+}
+/** Every break that started today for one person, oldest first — an open one's
+ *  duration is computed live from its start time rather than stored. */
+function breaksToday(empId) {
+  const start = todayISO();
+  return S.breaks.filter(b => b.employeeId === empId && b.startedAt.slice(0, 10) === start)
+    .sort(by(b => b.startedAt))
+    .map(b => ({ ...b, liveDurationSec: b.durationSec ?? Math.round((Date.now() - dOf(b.startedAt).getTime()) / 1000) }));
+}
+/** A person's most recent breaks (any day), newest first — for the manager's
+ *  timestamped view of exactly when someone was away and for how long. */
+function recentBreaks(empId, n = 20) {
+  return S.breaks.filter(b => b.employeeId === empId)
+    .sort(by(b => b.startedAt, -1)).slice(0, n)
+    .map(b => ({ ...b, liveDurationSec: b.durationSec ?? Math.round((Date.now() - dOf(b.startedAt).getTime()) / 1000) }));
+}
+
 /* ------------------------------------------------------------- team totals */
 function teamKPIs(taskSet) {
   const ts = taskSet || S.tasks;
