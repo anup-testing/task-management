@@ -175,8 +175,8 @@ function notifModal() {
   S.notifSeen = Date.now(); store.set("notifSeen", S.notifSeen);
   return `<div class="modal" role="dialog" aria-modal="true" aria-label="Notifications">
     <div class="dh"><h2>Notifications</h2><span class="hint">${ns.length}</span><div class="sp"><button class="iconbtn" data-close>${icon("x")}</button></div></div>
-    <div class="db" style="padding:8px">${ns.length ? ns.map(n => `
-      <button class="sr-item" data-open="${esc(n.taskId)}" style="width:100%;align-items:flex-start">
+    <div class="db" style="padding:8px;display:grid;gap:5px">${ns.length ? ns.map(n => `
+      <button class="sr-item notif" data-open="${esc(n.taskId)}" style="width:100%;align-items:flex-start">
         <span style="width:16px;text-align:center">${n.sev === 3 ? "🔴" : n.kind === "comment" ? "💬" : n.kind === "block" ? "⛔" : "•"}</span>
         <span style="flex:1;text-align:left"><span class="t" style="display:block">${esc(n.text)}</span><span class="m">${esc(fmtAgo(n.at))}</span></span>
       </button>`).join("") : emptyState("Nothing new", "You're up to date.")}</div>
