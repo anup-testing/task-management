@@ -182,6 +182,21 @@ function notifModal() {
       </button>`).join("") : emptyState("Nothing new", "You're up to date.")}</div>
   </div>`;
 }
+function assignPopupModal({ actorName, tasks }) {
+  const one = tasks.length === 1;
+  return `<div class="modal" role="dialog" aria-modal="true" aria-label="Task assigned">
+    <div class="dh"><h2>${one ? "New task assigned" : `${tasks.length} new tasks assigned`}</h2>
+      <div class="sp"><button class="iconbtn" data-close>${icon("x")}</button></div></div>
+    <div class="db" style="display:grid;gap:8px">
+      <p style="margin:0;font-size:13.5px"><strong>${esc(actorName)}</strong> assigned you:</p>
+      ${tasks.map(t => `<button class="sr-item notif" data-open="${esc(t.id)}" style="width:100%;align-items:flex-start">
+        <span style="width:16px;text-align:center">•</span>
+        <span style="flex:1;text-align:left"><span class="t" style="display:block">${esc(t.title)}</span></span>
+      </button>`).join("")}
+    </div>
+    <div class="df"><div class="sp"><button class="btn pri" data-close>Close</button></div></div>
+  </div>`;
+}
 function accountModal() {
   const e = S.me;
   return `<div class="modal" role="dialog" aria-modal="true" aria-label="Your account">

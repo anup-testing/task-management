@@ -3,12 +3,25 @@
    LAYERS — drawer, modals
    ========================================================================== */
 const L = () => $("#layer");
-function closeLayer() { L().innerHTML = ""; document.body.style.overflow = ""; S.openTask = null; }
+function closeLayer() { L().innerHTML = ""; document.body.style.overflow = ""; S.openTask = null; maybeShowAssignPopup(); }
 function openLayer(html) {
   L().innerHTML = `<div class="scrim" data-close></div>${html}`;
   document.body.style.overflow = "hidden";
   const first = L().querySelector("input,select,textarea,button:not([data-close])");
   if (first) setTimeout(() => first.focus(), 30);
+}
+
+/** A task-assignment popup stays open until the person closes it themselves,
+ *  so it's queued rather than shown as a toast — and held back if some other
+ *  layer (an edit form, another modal) is already open, so it can't clobber
+ *  unsaved work. Multiple assignments while away are queued and shown one at a time. */
+function queueAssignPopup(actorName, tasks) {
+  S.assignQueue.push({ actorName, tasks });
+  maybeShowAssignPopup();
+}
+function maybeShowAssignPopup() {
+  if (L().innerHTML || !S.assignQueue.length) return;
+  openLayer(assignPopupModal(S.assignQueue.shift()));
 }
 
 /* --------------------------------------------------------- task drawer */

@@ -89,8 +89,7 @@ function openStream() {
     await refresh(cols);
     if (before && S.me && (cfg().notify || {}).assigned !== false) {
       const mine = S.tasks.filter(t => t.assigneeId === S.me.id && before.get(t.id) !== S.me.id);
-      if (mine.length === 1) toast(`${empName(msg.actorId)} assigned you “${mine[0].title}”`);
-      else if (mine.length > 1) toast(`${empName(msg.actorId)} assigned you ${mine.length} tasks`);
+      if (mine.length) queueAssignPopup(empName(msg.actorId), mine);
     }
   });
   stream.onopen = () => { streamRetry = 0; S.offline = false; };
