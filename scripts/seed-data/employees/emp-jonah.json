@@ -1,0 +1,13 @@
+{
+ "name": "Jonah Weiss",
+ "initials": "JW",
+ "role": "employee",
+ "title": "Content Strategist",
+ "email": "jonah.weiss@lghomecomfort.ca",
+ "departmentId": "mkt",
+ "teamId": "content",
+ "managerId": "emp-asha",
+ "capacityHours": 32,
+ "color": "#16794A",
+ "active": true
+}

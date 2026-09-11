@@ -1,0 +1,151 @@
+{
+ "priorities": [
+  {
+   "id": "CRITICAL",
+   "label": "Critical",
+   "weight": 4.0,
+   "staleDays": 1
+  },
+  {
+   "id": "HIGH",
+   "label": "High",
+   "weight": 2.6,
+   "staleDays": 2
+  },
+  {
+   "id": "MEDIUM",
+   "label": "Medium",
+   "weight": 1.5,
+   "staleDays": 3
+  },
+  {
+   "id": "LOW",
+   "label": "Low",
+   "weight": 0.8,
+   "staleDays": 5
+  }
+ ],
+ "statuses": [
+  {
+   "id": "NOT_STARTED",
+   "label": "Not started",
+   "kind": "open"
+  },
+  {
+   "id": "IN_PROGRESS",
+   "label": "In progress",
+   "kind": "active"
+  },
+  {
+   "id": "WAITING",
+   "label": "Waiting",
+   "kind": "open"
+  },
+  {
+   "id": "BLOCKED",
+   "label": "Blocked",
+   "kind": "blocked"
+  },
+  {
+   "id": "UNDER_REVIEW",
+   "label": "Under review",
+   "kind": "active"
+  },
+  {
+   "id": "COMPLETED",
+   "label": "Completed",
+   "kind": "done"
+  },
+  {
+   "id": "CANCELLED",
+   "label": "Cancelled",
+   "kind": "done"
+  }
+ ],
+ "departments": [
+  {
+   "id": "mkt",
+   "name": "Marketing",
+   "teams": [
+    {
+     "id": "seo",
+     "name": "SEO"
+    },
+    {
+     "id": "content",
+     "name": "Content"
+    },
+    {
+     "id": "ads",
+     "name": "Paid Ads"
+    },
+    {
+     "id": "design",
+     "name": "Design"
+    }
+   ]
+  },
+  {
+   "id": "ops",
+   "name": "Operations",
+   "teams": [
+    {
+     "id": "admin",
+     "name": "Admin"
+    },
+    {
+     "id": "hr",
+     "name": "HR"
+    },
+    {
+     "id": "it",
+     "name": "IT"
+    }
+   ]
+  }
+ ],
+ "categories": [
+  "Audit",
+  "Content",
+  "Campaign",
+  "Development",
+  "Design",
+  "Reporting",
+  "Admin",
+  "Support",
+  "Research"
+ ],
+ "workload": {
+  "normal": 5,
+  "high": 11,
+  "overloaded": 18
+ },
+ "workingDays": [
+  1,
+  2,
+  3,
+  4,
+  5
+ ],
+ "defaultDueDays": 7,
+ "progressSteps": [
+  0,
+  10,
+  25,
+  50,
+  75,
+  90,
+  100
+ ],
+ "notify": {
+  "assigned": true,
+  "priority": true,
+  "dueSoon": true,
+  "overdue": true,
+  "blocked": true,
+  "comment": true,
+  "completed": false,
+  "reassigned": true
+ },
+ "updatedAt": "2026-07-26T09:00:00.000Z"
+}

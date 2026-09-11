@@ -1,0 +1,142 @@
+{
+ "title": "Core Web Vitals remediation — LCP on mobile",
+ "description": "Hero image and font loading are the two remaining LCP offenders.",
+ "assigneeId": "emp-ravi",
+ "createdById": "emp-asha",
+ "departmentId": "ops",
+ "teamId": "it",
+ "projectId": "prj-seo-migration",
+ "category": "Development",
+ "priority": "HIGH",
+ "status": "BLOCKED",
+ "progress": 30,
+ "createdAt": "2026-08-26T09:15:00.000Z",
+ "startDate": "2026-08-28",
+ "dueDate": "2026-09-10",
+ "expectedCompletion": "2026-09-10",
+ "completedAt": null,
+ "updatedAt": "2026-09-08T13:00:00.000Z",
+ "estimatedHours": 14,
+ "actualHours": 5,
+ "tags": [
+  "performance"
+ ],
+ "blocker": {
+  "reason": "No staging deploy access since the hosting account moved",
+  "cause": "IT / hosting vendor",
+  "ownerId": null,
+  "since": "2026-09-06",
+  "expectedResolution": "2026-09-12",
+  "needsManager": true,
+  "resolvedAt": null
+ },
+ "dependencies": [],
+ "links": [],
+ "comments": [
+  {
+   "id": "c49",
+   "authorId": "emp-ravi",
+   "at": "2026-09-06T09:00:00.000Z",
+   "body": "Raised a ticket with the host. No SSH, no deploy, nothing I can do from here.",
+   "managerNote": false
+  },
+  {
+   "id": "c411",
+   "authorId": "emp-asha",
+   "at": "2026-09-07T11:00:00.000Z",
+   "body": "Escalated. This is holding the whole LCP fix so I'm treating it as a blocker on the migration, not just this task.",
+   "managerNote": true
+  }
+ ],
+ "activity": [
+  {
+   "id": "a40",
+   "at": "2026-08-26T09:15:00.000Z",
+   "byId": "emp-asha",
+   "byName": "Asha Raman",
+   "kind": "create",
+   "field": null,
+   "from": null,
+   "to": null,
+   "note": "Task created"
+  },
+  {
+   "id": "a41",
+   "at": "2026-08-26T09:16:00.000Z",
+   "byId": "emp-asha",
+   "byName": "Asha Raman",
+   "kind": "assign",
+   "field": "assigneeId",
+   "from": null,
+   "to": "emp-ravi",
+   "note": null
+  },
+  {
+   "id": "a42",
+   "at": "2026-08-28T09:30:00.000Z",
+   "byId": "emp-ravi",
+   "byName": "Ravi Menon",
+   "kind": "status",
+   "field": "status",
+   "from": "Not started",
+   "to": "In progress",
+   "note": null
+  },
+  {
+   "id": "a430",
+   "at": "2026-08-29T13:00:00.000Z",
+   "byId": "emp-ravi",
+   "byName": "Ravi Menon",
+   "kind": "progress",
+   "field": "progress",
+   "from": "0%",
+   "to": "10%",
+   "note": null
+  },
+  {
+   "id": "a431",
+   "at": "2026-08-30T13:07:00.000Z",
+   "byId": "emp-ravi",
+   "byName": "Ravi Menon",
+   "kind": "progress",
+   "field": "progress",
+   "from": "10%",
+   "to": "25%",
+   "note": null
+  },
+  {
+   "id": "ac49",
+   "at": "2026-09-06T09:00:00.000Z",
+   "byId": "emp-ravi",
+   "byName": "Ravi Menon",
+   "kind": "comment",
+   "field": null,
+   "from": null,
+   "to": null,
+   "note": "Raised a ticket with the host. No SSH, no deploy, nothing I can do from here."
+  },
+  {
+   "id": "a4b",
+   "at": "2026-09-06T11:00:00.000Z",
+   "byId": "emp-ravi",
+   "byName": "Ravi Menon",
+   "kind": "block",
+   "field": null,
+   "from": null,
+   "to": null,
+   "note": "Blocker: No staging deploy access since the hosting account moved (manager intervention requested)"
+  },
+  {
+   "id": "ac411",
+   "at": "2026-09-07T11:00:00.000Z",
+   "byId": "emp-asha",
+   "byName": "Asha Raman",
+   "kind": "comment",
+   "field": null,
+   "from": null,
+   "to": null,
+   "note": "Escalated. This is holding the whole LCP fix so I'm treating it as a blocker on the migration, not just this task."
+  }
+ ],
+ "reopenCount": 0
+}

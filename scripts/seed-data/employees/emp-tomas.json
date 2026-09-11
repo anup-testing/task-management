@@ -1,0 +1,13 @@
+{
+ "name": "Tomas Reyes",
+ "initials": "TR",
+ "role": "employee",
+ "title": "Paid Media Analyst",
+ "email": "tomas.reyes@lghomecomfort.ca",
+ "departmentId": "mkt",
+ "teamId": "ads",
+ "managerId": "emp-asha",
+ "capacityHours": 40,
+ "color": "#B8342A",
+ "active": true
+}

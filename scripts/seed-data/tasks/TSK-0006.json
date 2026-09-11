@@ -1,0 +1,51 @@
+{
+ "title": "Canonical tag review on paginated blog",
+ "description": "",
+ "assigneeId": "emp-priya",
+ "createdById": "emp-asha",
+ "departmentId": "mkt",
+ "teamId": "seo",
+ "projectId": "prj-seo-migration",
+ "category": "Audit",
+ "priority": "LOW",
+ "status": "NOT_STARTED",
+ "progress": 0,
+ "createdAt": "2026-09-04T09:15:00.000Z",
+ "startDate": null,
+ "dueDate": "2026-09-24",
+ "expectedCompletion": null,
+ "completedAt": null,
+ "updatedAt": "2026-09-10T11:00:00.000Z",
+ "estimatedHours": 4,
+ "actualHours": null,
+ "tags": [],
+ "blocker": null,
+ "dependencies": [],
+ "links": [],
+ "comments": [],
+ "activity": [
+  {
+   "id": "a50",
+   "at": "2026-09-04T09:15:00.000Z",
+   "byId": "emp-asha",
+   "byName": "Asha Raman",
+   "kind": "create",
+   "field": null,
+   "from": null,
+   "to": null,
+   "note": "Task created"
+  },
+  {
+   "id": "a51",
+   "at": "2026-09-04T09:16:00.000Z",
+   "byId": "emp-asha",
+   "byName": "Asha Raman",
+   "kind": "assign",
+   "field": "assigneeId",
+   "from": null,
+   "to": "emp-priya",
+   "note": null
+  }
+ ],
+ "reopenCount": 0
+}

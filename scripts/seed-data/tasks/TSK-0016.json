@@ -1,0 +1,122 @@
+{
+ "title": "Fact-check service-area claims with dispatch",
+ "description": "Legal will not sign off on the coverage map until dispatch confirms which postal codes we actually service same-day.",
+ "assigneeId": "emp-jonah",
+ "createdById": "emp-asha",
+ "departmentId": "mkt",
+ "teamId": "content",
+ "projectId": "prj-location-pages",
+ "category": "Research",
+ "priority": "CRITICAL",
+ "status": "WAITING",
+ "progress": 50,
+ "createdAt": "2026-08-29T09:15:00.000Z",
+ "startDate": "2026-08-30",
+ "dueDate": "2026-09-09",
+ "expectedCompletion": "2026-09-11",
+ "completedAt": null,
+ "updatedAt": "2026-09-08T07:00:00.000Z",
+ "estimatedHours": 4,
+ "actualHours": 2,
+ "tags": [
+  "compliance"
+ ],
+ "blocker": null,
+ "dependencies": [
+  {
+   "description": "Same-day coverage list from dispatch",
+   "ownerId": "emp-samuel",
+   "status": "OPEN"
+  }
+ ],
+ "links": [],
+ "comments": [
+  {
+   "id": "c1514",
+   "authorId": "emp-jonah",
+   "at": "2026-09-08T14:00:00.000Z",
+   "body": "Dispatch says the same-day list is different from the marketing coverage map in four regions. We can't publish the current claim.",
+   "managerNote": false
+  }
+ ],
+ "activity": [
+  {
+   "id": "a150",
+   "at": "2026-08-29T09:15:00.000Z",
+   "byId": "emp-asha",
+   "byName": "Asha Raman",
+   "kind": "create",
+   "field": null,
+   "from": null,
+   "to": null,
+   "note": "Task created"
+  },
+  {
+   "id": "a151",
+   "at": "2026-08-29T09:16:00.000Z",
+   "byId": "emp-asha",
+   "byName": "Asha Raman",
+   "kind": "assign",
+   "field": "assigneeId",
+   "from": null,
+   "to": "emp-jonah",
+   "note": null
+  },
+  {
+   "id": "a152",
+   "at": "2026-08-30T09:30:00.000Z",
+   "byId": "emp-jonah",
+   "byName": "Jonah Weiss",
+   "kind": "status",
+   "field": "status",
+   "from": "Not started",
+   "to": "In progress",
+   "note": null
+  },
+  {
+   "id": "a1530",
+   "at": "2026-08-31T13:00:00.000Z",
+   "byId": "emp-jonah",
+   "byName": "Jonah Weiss",
+   "kind": "progress",
+   "field": "progress",
+   "from": "0%",
+   "to": "10%",
+   "note": null
+  },
+  {
+   "id": "a1531",
+   "at": "2026-09-01T13:07:00.000Z",
+   "byId": "emp-jonah",
+   "byName": "Jonah Weiss",
+   "kind": "progress",
+   "field": "progress",
+   "from": "10%",
+   "to": "25%",
+   "note": null
+  },
+  {
+   "id": "a1532",
+   "at": "2026-09-02T13:14:00.000Z",
+   "byId": "emp-jonah",
+   "byName": "Jonah Weiss",
+   "kind": "progress",
+   "field": "progress",
+   "from": "25%",
+   "to": "50%",
+   "note": null
+  },
+  {
+   "id": "ac1514",
+   "at": "2026-09-08T14:00:00.000Z",
+   "byId": "emp-jonah",
+   "byName": "Jonah Weiss",
+   "kind": "comment",
+   "field": null,
+   "from": null,
+   "to": null,
+   "note": "Dispatch says the same-day list is different from the marketing coverage map in four regions. We can't publish the curre"
+  }
+ ],
+ "reopenCount": 0
+}
